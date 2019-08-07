@@ -1,21 +1,21 @@
 # Schematics
 
-A schematic is a template-based code generator that supports complex logic.
-It is a set of instructions for transforming a software project by generating or modifying code.
-Schematics are packaged into [collections](guide/glossary#collection) and installed with npm.
+Schematicは複雑なロジックをサポートするテンプレートベースのコードジェネレーターです。
+コードを生成または変更することによって、ソフトウェアプロジェクトを変換するための一連の命令です。  
+Schematicsは[コレクション](guide/glossary#collection)にパッケージ化され、npmとともにインストールされます。  
 
-The schematic collection can be a powerful tool for creating, modifying, and maintaining any software project, but is particularly useful for customizing Angular projects to suit the particular needs of your own organization.
-You might use schematics, for example, to generate commonly-used UI patterns or specific components, using predefined templates or layouts.
-You can use schematics to enforce architectural rules and conventions, making your projects consistent and inter-operative.
+Schematicコレクションはソフトウェアプロジェクトを作成、変更、および保守するための強力なツールになりますが、Angularプロジェクトをカスタマイズして自分の組織の特定のニーズに合わせるのに特に有用です。  
+例えば、事前に定義されたテンプレートまたはレイアウトを使って、一般的に使用されるUIパターンまたは特定のコンポーネントを生成するために、Schematicsを使用できます。  
+Schematicsを使用して、アーキテクチャのルールや約束を適用することで、プロジェクトの一貫性と相互運用性を実現できます。  
 
-## Schematics for the Angular CLI
+## Angular CLI の Schematics
 
-Schematics are part of the Angular ecosystem. The [Angular CLI](guide/glossary#cli)  uses schematics to apply transforms to a web-app project.
-You can modify these schematics, and define new ones to do things like update your code to fix breaking changes in a dependency, for example, or to add a new configuration option or framework to an existing project.
+SchematicsはAngularのエコシステムの一部です。[Angular CLI](guide/glossary#cli)はSchematicsを使用してWebアプリプロジェクトに変換を適用します。  
+Schematicsを変更することで、依存関係の破壊的変更を修正するためにコードを更新したり、既存のプロジェクトに新しい構成オプションまたはフレームワークを追加したりするなどの新しいSchematicsを定義することができます。  
 
-Schematics that are included in the `@schematics/angular` collection are run by default by the commands `ng generate` and `ng add`.
-The package contains named schematics that configure the options that are available to the CLI for `ng generate` sub-commands, such as `ng generate component` and `ng generate service`.
-The subcommands for `ng generate` are shorthand for the corresponding schematic. You can specify a particular schematic (or collection of schematics) to generate, using the long form:
+`@schematics/angular`コレクションに含まれるschematicsは、`ng generate`や`ng add`コマンドによってデフォルトで実行されます。   
+パッケージには、`ng generate`サブコマンド（`ng generate component`や`ng generate service`）などCLIで使用可能なオプションを構成する名前付きの schematics が含まれています。  
+`ng generate`のサブコマンドは、対応するschematicの略記です。 次のような形式を使用することで、生成する特定のschematic（またはschematicsのコレクション）を指定できます。  
 
 <code-example language="bash" linenums="false">
 ng generate my-schematic-collection:my-schematic-name
@@ -27,28 +27,29 @@ ng generate my-schematic-collection:my-schematic-name
 ng generate my-schematic-name --collection collection-name
 </code-example>
 
-### Configuring CLI schematics
+### CLI schematicsの構成
 
-A JSON schema associated with a schematic tells the Angular CLI what options are available to commands and subcommands, and determines the defaults.
-These defaults can be overridden by providing a different value for an option on the command line.
-See [Workspace Configuration](guide/workspace-config) for information about how you can change the generation option defaults for your workspace.
+schematicに関連付けられたJSONスキーマは、コマンドとサブコマンドで使用可能なオプションをAngular CLIに通知し、デフォルトを決定します。  
+これらのデフォルトは、コマンドラインのオプションに異なる値を指定することでオーバーライドできます。  
+ワークスペースの生成オプションのデフォルトを変更する方法については、[ワークスペースの構成](guide/workspace-config)を参照してください。  
 
-The JSON schemas for the default schematics used by the CLI to generate projects and parts of projects are collected in the package [`@schematics/angular`](https://raw.githubusercontent.com/angular/angular-cli/v7.0.0/packages/schematics/angular/application/schema.json).
-The schema describes the options available to the CLI for each of the `ng generate` sub-commands, as shown in the `--help` output.
+CLIがプロジェクトやその一部を生成するために使用するデフォルトのschematicsのJSONスキーマは、パッケージ[`@schematics/angular`](https://raw.githubusercontent.com/angular/angular-cli/v7.0.0/packages/schematics/angular/application/schema.json)にまとまっています。
+スキーマは、 `--help`の出力に示されているように、`ng generate`サブコマンドごとにCLIで利用可能なオプションを記述します。
 
-## Developing schematics for libraries
+## ライブラリのためのschematics開発
 
-As a library developer, you can create your own collections of custom schematics to integrate your library with the Angular CLI.
+ライブラリ開発者は、カスタムschematicsの独自のコレクションを作成して、ライブラリをAngular CLIと統合できます。
 
-* An *add schematic* allows developers to install your library in an Angular workspace using `ng add`.
+* *add schematic*によって、開発者は `ng add`を使用して、Angularワークスペースにライブラリをインストールできます。
 
+* *Generation schematics*は、ライブラリで定義されているプロジェクトの変更、設定とスクリプト、およびscaffoldアーチファクトの追加方法を`ng generate`サブコマンドに伝えることができます。
 * *Generation schematics* can tell the `ng generate` subcommands how to modify projects, add configurations and scripts, and scaffold  artifacts that are defined in your library.
 
-* An *update schematic* can tell the `ng update` command how to update your library's dependencies and adjust for breaking changes when you release a new version.
+* *update schematic*は、`ng update`コマンドにライブラリの依存関係を更新し、新しいバージョンをリリースする際の破壊的変更を調整する方法を指示できます。
 
-For more details of what these look like and how to create them, see:
-* [Authoring Schematics](guide/schematics-authoring)
-* [Schematics for Libraries](guide/schematics-for-libraries)
+これらの使い方と作成方法の詳細については、以下を参照してください。
+* [Schematicsの作成](guide/schematics-authoring)
+* [ライブラリのためのSchematics](guide/schematics-for-libraries)
 
 ### Add schematics
 
