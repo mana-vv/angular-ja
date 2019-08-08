@@ -98,25 +98,25 @@ ng update
     Run "ng update --all" to try to update all at the same time.
 </code-example>
 
-If you pass the command a set of libraries to update (or the `--all` flag), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
+コマンドに更新するライブラリのセット（または `--all`フラグ）を渡すと、それらのライブラリ、それらのpeer依存関係、およびそれらに依存するpeer依存関係が更新されます。
 
 <div class="alert is-helpful">
 
-If there are inconsistencies (for example, if peer dependencies cannot be matched by a simple [semver](https://semver.io/) range), the command generates an error and does not change anything in the workspace.
+矛盾がある場合（たとえば、peer依存関係を単純な[semver](https://semver.io/)の範囲で照合できない場合）、コマンドはエラーを生成し、ワークスペース内の何も変更しません。
 
-We recommend that you do not force an update of all dependencies by default. Try updating specific dependencies first.
+デフォルトでは、すべての依存関係の更新を強制しないことをお勧めします。 最初に特定の依存関係を更新してみてください。
 
-For more about how the `ng update` command works, see [Update Command](https://github.com/angular/angular-cli/blob/master/docs/specifications/update.md).
+「ng update」コマンドの機能の詳細については、[Update Command](https://github.com/angular/angular-cli/blob/master/docs/specifications/update.md)を参照してください。
 
 </div>
 
-If you create a new version of your library that introduces potential breaking changes, you can provide an *update schematic* to enable the `ng update` command to automatically resolve any such changes in the project being updated.
+潜在的な破壊的変更をもたらすライブラリの新しいバージョンを作成する場合、*update schematic*を提供して、`ng update`コマンドによって、更新されているプロジェクトのそのような変更を自動的に解決できるようにします。
 
-For example, suppose you want to update the Angular Material library.
+たとえば、Angular Materialライブラリを更新するとします。
 
 <code-example language="bash" linenums="false">
 ng update @angular/material
 </code-example>
 
-This command updates both `@angular/material` and its dependency `@angular/cdk` in your workspace's `package.json`.
-If either package contains an update schematic that covers migration from the existing version to a new version, the command runs that schematic on your workspace.
+このコマンドは、ワークスペースの`package.json`内の`@angular/material`とその依存関係`@angular/cdk`の両方を更新します。
+いずれかのパッケージに、既存のバージョンから新しいバージョンへの移行をカバーするupdate schematicが含まれている場合、コマンドはワークスペースでそのschematicを実行します。
