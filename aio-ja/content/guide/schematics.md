@@ -51,27 +51,27 @@ CLIがプロジェクトやその一部を生成するために使用するデ�
 * [Schematicsの作成](guide/schematics-authoring)
 * [ライブラリのためのSchematics](guide/schematics-for-libraries)
 
-### Add schematics
+### add schematics
 
-An add schematic is typically supplied with a library, so that the library can be added to an existing project with `ng add`.
-The `add` command uses your package manager to download new dependencies, and invokes an installation script that is implemented as a schematic.
+add schematicsには通常ライブラリが付属しているため、`ng add`を使用してライブラリを既存のプロジェクトに追加できます。  
+`add`コマンドはパッケージマネージャーを使用して新しい依存関係をダウンロードし、schematicとして実装されているインストールスクリプトを呼び出します。
 
-For example, the [`@angular/material`](https://material.angular.io/guide/schematics) schematic tells the `add` command to install and set up Angular Material and theming, and register new starter components that can be created with `ng generate`.
-You can look at this one as an example and model for your own add schematic.
+たとえば、[`@angular/material`]（https://material.angular.io/guide/schematics）schematicは、Angular Materialとテーマをインストールして設定し、`ng generate`で作成できる新しいスターターコンポーネントを登録するように`add`コマンドに指示します。  
+これを例として見て、独自のadd schematicを作ることができます。
 
-Partner and third party libraries also support the Angular CLI with add schematics.
-For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io/)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://vmware.github.io/clarity/documentation/v1.0/get-started).
+パートナーおよびサードパーティのライブラリも、add schematicsとともにAngular CLIをサポートしています。
+たとえば、`@ng-bootstrap/schematics`は[ng-bootstrap](https://ng-bootstrap.github.io/)をアプリに追加し、`@clr/angular` は[Clarity from VMWare]をインストールして設定します。
 
-An add schematic can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
-For example, the `@angular/pwa` schematic turns your application into a PWA by adding an app manifest and service worker, and the `@angular/elements`  schematic adds  the `document-register-element.js` polyfill and dependencies for Angular Elements.
+add schematicは構成を変更してプロジェクトを更新したり、（ポリフィルなどの）依存関係を追加したり、パッケージ固有の初期化コードをscaffoldしたりできます。  
+たとえば、`@angular/pwa`schematicはアプリマニフェストとサービスワーカーを追加することでアプリケーションをPWAに変換し、`@angular/elements`schematicは `document-register-element.js`ポリフィルとAngular Elementsの依存関係を追加します。
 
 ### Generation schematics
 
-Generation schematics are instructions for the `ng generate` command.
-The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic (in place of a sub-command) to generate an artifact defined in your library.
+Generation schematicsは、`ng generate`コマンドの指示です。  
+ドキュメント化されたサブコマンドはデフォルトのAngular generation schematicsを使用しますが、ライブラリーで定義されたアーティファクトを生成するために、（サブコマンドの代わりに）異なるschematicを指定できます。
 
-Angular Material, for example, supplies generation schematics for the UI components that it defines.
-The following command uses one of these schematics to render an Angular Material `<mat-table>` that is pre-configured with a datasource for sorting and pagination.
+たとえば、Angular Materialは、定義するUIコンポーネントのgeneration schematicsを提供します。  
+次のコマンドは、これらのschematicsのひとつを使用して、ソートおよびページネーション用のデータソースで事前設定されたAngular Materialの`<mat-table>`をレンダリングします。
 
 <code-example language="bash" linenums="false">
 ng generate @angular/material:table <component-name>
@@ -79,7 +79,7 @@ ng generate @angular/material:table <component-name>
 
 ### Update schematics
 
- The `ng update` command can be used to update your workspace's library dependencies. If you supply no options or use the help option, the command examines your workspace and suggests libraries to update.
+`ng update`コマンドを使用して、ワークスペースのライブラリの依存関係を更新できます。オプションを指定しないか、ヘルプオプションを使用すると、コマンドはワークスペースを調べ、更新するライブラリを提案します。
 
 <code-example language="bash" linenums="false">
 ng update
