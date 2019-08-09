@@ -1,36 +1,36 @@
 # Schematics
 
-Schematicは複雑なロジックをサポートするテンプレートベースのコードジェネレーターです。
-コードを生成または変更することによって、ソフトウェアプロジェクトを変換するための一連の命令です。  
+スケマティックは複雑なロジックをサポートするテンプレートベースのコードジェネレーターです。
+コードを生成または変更することによってソフトウェアプロジェクトを変換するための一連の命令です。  
 Schematicsは[コレクション](guide/glossary#collection)にパッケージ化され、npmとともにインストールされます。  
 
-Schematicコレクションはソフトウェアプロジェクトを作成、変更、および保守するための強力なツールになりますが、Angularプロジェクトをカスタマイズして自分の組織の特定のニーズに合わせるのに特に有用です。  
-例えば、事前に定義されたテンプレートまたはレイアウトを使って、一般的に使用されるUIパターンまたは特定のコンポーネントを生成するために、Schematicsを使用できます。  
-Schematicsを使用して、アーキテクチャのルールや約束を適用することで、プロジェクトの一貫性と相互運用性を実現できます。  
+スケマティックコレクションはソフトウェアプロジェクトを作成、変更、および保守するための強力なツールになりますが、特にAngularプロジェクトをカスタマイズして自分の組織の特定のニーズに合わせるのに有用です。  
+たとえば、事前に定義されたテンプレートやレイアウトを使って、一般的に使われるUIパターンまたは特定のコンポーネントを生成するためにSchematicsを使うことができます。  
+Schematicsを使用してアーキテクチャのルールや規約を適用することで、プロジェクトの一貫性と相互運用性を実現できます。  
 
 ## Angular CLI の Schematics
 
-SchematicsはAngularのエコシステムの一部です。[Angular CLI](guide/glossary#cli)はSchematicsを使用してWebアプリプロジェクトに変換を適用します。  
-Schematicsを変更することで、依存関係の破壊的変更を修正するためにコードを更新したり、既存のプロジェクトに新しい構成オプションまたはフレームワークを追加したりするなどの新しいSchematicsを定義することができます。  
+SchematicsはAngularのエコシステムの一部です。[Angular CLI](guide/glossary#cli)はSchematicsを使用してWebアプリプロジェクトを変換します。  
+Schematicsを変更することで、依存関係の破壊的変更を修正するためにコードを更新したり、既存のプロジェクトに新しい構成オプションまたはフレームワークを追加したりする新しいSchematicsを定義することができます。  
 
-`@schematics/angular`コレクションに含まれるschematicsは、`ng generate`や`ng add`コマンドによってデフォルトで実行されます。   
-パッケージには、`ng generate`サブコマンド（`ng generate component`や`ng generate service`）などCLIで使用可能なオプションを構成する名前付きの schematics が含まれています。  
-`ng generate`のサブコマンドは、対応するschematicの略記です。 次のような形式を使用することで、生成する特定のschematic（またはschematicsのコレクション）を指定できます。  
+`@schematics/angular`コレクションに含まれるSchematicsは、`ng generate`や`ng add`コマンドによってデフォルトで実行されます。   
+パッケージには、`ng generate`サブコマンド（`ng generate component`や`ng generate service`）などCLIで使用可能なオプションを構成する名前付きのSchematicsが含まれています。  
+`ng generate`のサブコマンドは、対応するSchematicの略記です。次の形式を使用することで、生成する特定のSchematic（またはSchematicsコレクション）を指定できます。  
 
 <code-example language="bash" linenums="false">
 ng generate my-schematic-collection:my-schematic-name
 </code-example>
 
-&mdash;or&mdash;
+&mdash;または&mdash;
 
 <code-example language="bash" linenums="false">
 ng generate my-schematic-name --collection collection-name
 </code-example>
 
-### CLI schematicsの構成
+### CLI Schematicsの構成
 
-schematicに関連付けられたJSONスキーマは、コマンドとサブコマンドで使用可能なオプションをAngular CLIに通知し、デフォルトを決定します。  
-これらのデフォルトは、コマンドラインのオプションに異なる値を指定することでオーバーライドできます。  
+スケマティックに関連付けられたJSONスキーマは、コマンドとサブコマンドで使用可能なオプションをAngular CLIに通知し、デフォルトを決定します。  
+これらのデフォルトは、コマンドラインのオプションに異なる値を指定することでオーバーライドすることができます。  
 ワークスペースの生成オプションのデフォルトを変更する方法については、[ワークスペースの構成](guide/workspace-config)を参照してください。  
 
 CLIがプロジェクトやその一部を生成するために使用するデフォルトのschematicsのJSONスキーマは、パッケージ[`@schematics/angular`](https://raw.githubusercontent.com/angular/angular-cli/v7.0.0/packages/schematics/angular/application/schema.json)にまとまっています。
